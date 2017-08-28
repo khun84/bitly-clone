@@ -3,27 +3,33 @@ get '/' do
 end
 
 post '/urls' do
-  url = Url.new(long_url:params[:long_url])
+  @url = Url.new(long_url:params[:long_url])
+  @url[:click_count] = 0
 
-  if url.save
+  if @url.save
 
   else
-    redirect '/'
+    @messages = @url.errors.full_messages
+    erb :"static/error"
   end
 end
 
 get '/:short_url' do
   short_url = params[:short_url]
   url = Url.where('short_url = ?', short_url)[0]
-  long_url = url[:long_url]
-  # puts '+'*10
-  # puts long_url
-  # puts '+'*10
-
-  if long_url.scan(/^.+\/\//).length == 0
-    redirect 'http://' + long_url
+  if url.nil?
+    @messages = ['There is no such short url']
+    erb :'static/error'
   else
+    # url = urls[0]
+    count = url[:click_count]+1
+    long_url = url[:long_url]
+    url.update_column(:click_count,count)
+
     redirect long_url
+
+
   end
+
 
 end

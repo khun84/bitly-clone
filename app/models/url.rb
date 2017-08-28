@@ -4,6 +4,7 @@ require 'active_record'
 class Url < ActiveRecord::Base
 
   validates :long_url, presence: true, format: {with: URI.regexp(['http', 'https'])}
+  validates :short_url, uniqueness: true
 
 
 	# This is Sinatra! Remember to create a migration!
