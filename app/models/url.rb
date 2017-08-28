@@ -1,4 +1,11 @@
+require 'URI'
+require 'active_record'
+
 class Url < ActiveRecord::Base
+
+  validates :long_url, presence: true, format: {with: URI.regexp(['http', 'https'])}
+
+
 	# This is Sinatra! Remember to create a migration!
   before_save do |user|
     user[:short_url] = shorten_url
