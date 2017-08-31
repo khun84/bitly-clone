@@ -1,4 +1,7 @@
+require 'byebug'
+
 get '/' do
+  @urls = Url.all
   erb :"static/index"
 end
 
@@ -6,11 +9,16 @@ post '/urls' do
   @url = Url.new(long_url:params[:long_url])
   @url[:click_count] = 0
 
-  if @url.save
+  @url.save
 
+  if @url.save
+    @url[:short_url] = "http://localhost:9393/#{@url[:short_url]}"
+    return @url.to_json
+  #   # redirect '/'
   else
-    @messages = @url.errors.full_messages
-    erb :"static/error"
+    return @url.errors.to_json
+  # #   # erb :"static/error"
+  # #   return @messages
   end
 end
 

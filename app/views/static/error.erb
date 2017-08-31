@@ -1,6 +1,11 @@
-<% @messages.each do |message| %>
-  <p><%=	 message %></p>
+<%= erb :"static/index", layout: false %>
 
+<% if @messages %>
+    <div id="error_containter">
+      <p class="error-message-header">Error message</p>
+      <% @messages.each do |message| %>
+        <p class="error-message"><%=	 message %></p>
+      <% end %>
+    </div>
 <% end %>
-
-<a href="/">Back to home page</a>
+<!--<a href="/">Back to home page</a>-->

@@ -1,5 +1,9 @@
-<form action="/urls" method="post">
-  Enter URL:
-  <input type="text" name="long_url">
-  <input type="submit" value="Submit">
-</form>
+<% require 'byebug' %>
+<div class="form-container">
+  <form action="/urls" method="post" id="url_form">
+    <input type="text" id='shorten_url' name="long_url" placeholder="Paste a link to shorten it">
+    <input type="submit" id="shorten_btn" value="Shorten">
+  </form>
+</div>
+
+

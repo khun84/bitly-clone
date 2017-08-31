@@ -1,0 +1,32 @@
+<table id="url_table">
+  <thead class="column-header">
+  <td>No.</td>
+  <td>Long Url</td>
+  <td>Short Url</td>
+  <td>Click Count</td>
+  </thead>
+
+  <tbody class="data">
+  <%	if @urls  %>
+      <% i = 0 %>
+      <% @urls.each_with_index do |url, idx| %>
+          <tr>
+
+            <td class="column-index"><%= idx + 1 %></td>
+            <td class="column-url">
+              <a href="<%= url[:long_url] %>">
+                <%= url[:long_url] %></td>
+              </a>
+            <td class="column-url">
+              <a href="<%= "http://localhost:9393/#{url[:short_url]}"  %>">
+                <%= "http://localhost:9393/#{url[:short_url]}" %>
+              </a>
+            </td>
+            <td class="column-count"><%= url[:click_count] %></td>
+          </tr>
+
+      <% end %>
+  <% end %>
+  </tbody>
+
+</table>

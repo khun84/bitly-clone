@@ -1,8 +1,58 @@
 <html>
 	<head>
-		<title>Sinatra Framework</title>
+		<link rel="stylesheet" href="css/application.css">
+		<title>Bitly | URL Shortener and Link Management Platform</title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+		<script type="text/javascript" src="../js/application.js"></script>
+
 	</head>
 	<body>
-		<%= yield %>
+		<header id="header">
+			<div id="header-inner">
+				<div class="container container-pod container-pod-short">
+					<h1 id="header-logo">
+						<a href="/" class="header-logo"></a>
+
+					</h1>
+
+					<nav class="navigation">
+						<ul>
+							<li><a href="#">Tour</a></li>
+							<li><a href="">Enterprise</a></li>
+							<li><a href="">Resources</a></li>
+							<li><a href="">Blog</a></li>
+							<li><a href="">About</a></li>
+						</ul>
+					</nav>
+
+					<div class="header-button-wrapper">
+						<a href="#" class="header-login">
+							Login
+						</a>
+						<a href="#" class="header-signup">
+							Sign Up
+						</a>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="clearfix" id="container">
+			<div class="container container-pod shorten-container">
+				<h1 class="slogan">The link knows all. So can you.</h1>
+				<h4 class="sub-slogan">Measure your links with Bitly, the world's leading link management platform.</h4>
+			</div>
+
+			<%= yield %>
+
+
+		</div>
+
+		<%= erb :"/static/url_table", layout: false %>
 	</body>
 </html>
